@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,4 +98,39 @@ public class BookRepositoryTest {
         assertFalse(bookRepository.findById(id).isPresent());
     }
 
+    // 1, junit, 겟인데어
+    // 5. 책 수정
+    @Sql("classpath:db/tableInit.sql")
+    @Test
+    public void 책수정_test() {
+        // given
+        Long id = 1L;
+        String title = "junit5";
+        String author = "메타코딩";
+        Book book = new Book(id, title, author);
+
+        // when
+        // bookRepository.findAll().stream()
+        // .forEach((b) -> {
+        // System.out.println(b.getId());
+        // System.out.println(b.getTitle());
+        // System.out.println(b.getAuthor());
+        // System.out.println("1.==============");
+        // });
+
+        Book bookPS = bookRepository.save(book);
+
+        // bookRepository.findAll().stream()
+        // .forEach((b) -> {
+        // System.out.println(b.getId());
+        // System.out.println(b.getTitle());
+        // System.out.println(b.getAuthor());
+        // System.out.println("2.==============");
+        // });
+
+        // then
+        assertEquals(id, bookPS.getId());
+        assertEquals(title, bookPS.getTitle());
+        assertEquals(author, bookPS.getAuthor());
+    }
 }

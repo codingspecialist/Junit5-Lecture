@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.junitproject.domain.Book;
 import site.metacoding.junitproject.domain.BookRepository;
-import site.metacoding.junitproject.util.Mail;
 import site.metacoding.junitproject.util.MailSender;
 import site.metacoding.junitproject.web.dto.BookRespDto;
 import site.metacoding.junitproject.web.dto.BookSaveReqDto;
@@ -27,8 +26,6 @@ public class BookService {
     public BookRespDto 책등록하기(BookSaveReqDto dto) {
         Book bookPS = bookRepository.save(dto.toEntity());
         if (bookPS != null) {
-            // 메일보내기 메서드 호출 (return true or false)
-
             if (!mailSender.send()) {
                 throw new RuntimeException("메일이 전송되지 않았습니다");
             }

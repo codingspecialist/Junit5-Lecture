@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import site.metacoding.junitproject.web.dto.BookRespDto;
 
 @NoArgsConstructor
 @Getter
@@ -34,5 +35,13 @@ public class Book {
     public void update(String titie, String author) {
         this.title = titie;
         this.author = author;
+    }
+
+    public BookRespDto toDto() {
+        return BookRespDto.builder()
+                .id(id)
+                .title(title)
+                .author(author)
+                .build();
     }
 }

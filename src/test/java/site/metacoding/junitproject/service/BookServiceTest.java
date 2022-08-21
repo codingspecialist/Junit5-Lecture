@@ -51,8 +51,10 @@ public class BookServiceTest {
         // then
         // assertEquals("junit하하하", bookRespDto.getTitle());
         // assertEquals(dto.getAuthor(), bookRespDto.getAuthor());
-        assertThat(dto.getTitle()).isEqualTo(bookRespDto.getTitle());
-        assertThat(dto.getAuthor()).isEqualTo(bookRespDto.getAuthor());
+
+        assertThat(bookRespDto.getTitle()).isEqualTo(dto.getTitle());
+        assertThat(bookRespDto.getAuthor()).isEqualTo(dto.getAuthor());
+
     }
 
     @Test
@@ -81,6 +83,9 @@ public class BookServiceTest {
         });
 
         // then
-        // assertThat(bookRespDtoList.get(0).getTitle()).isEqualTo("junit강의");
+        assertThat(bookRespDtoList.get(0).getTitle()).isEqualTo("junit강의");
+        assertThat(bookRespDtoList.get(0).getAuthor()).isEqualTo("메타코딩");
+        assertThat(bookRespDtoList.get(1).getTitle()).isEqualTo("spring강의");
+        assertThat(bookRespDtoList.get(1).getAuthor()).isEqualTo("겟인데어");
     }
 }

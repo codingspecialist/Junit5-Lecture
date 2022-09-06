@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import site.metacoding.junitproject.domain.Book;
-import site.metacoding.junitproject.web.dto.BookRespDto;
+import site.metacoding.junitproject.web.dto.response.BookRespDto;
 
 public class RealTest {
 

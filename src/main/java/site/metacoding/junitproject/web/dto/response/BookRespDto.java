@@ -1,4 +1,4 @@
-package site.metacoding.junitproject.web.dto;
+package site.metacoding.junitproject.web.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;

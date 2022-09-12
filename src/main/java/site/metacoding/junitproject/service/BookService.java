@@ -12,6 +12,7 @@ import site.metacoding.junitproject.domain.Book;
 import site.metacoding.junitproject.domain.BookRepository;
 import site.metacoding.junitproject.util.MailSender;
 import site.metacoding.junitproject.web.dto.request.BookSaveReqDto;
+import site.metacoding.junitproject.web.dto.response.BookListRespDto;
 import site.metacoding.junitproject.web.dto.response.BookRespDto;
 
 @RequiredArgsConstructor
@@ -34,7 +35,7 @@ public class BookService {
     }
 
     // 2. 책목록보기
-    public List<BookRespDto> 책목록보기() {
+    public BookListRespDto 책목록보기() {
 
         List<BookRespDto> dtos = bookRepository.findAll().stream()
                 // .map((bookPS) -> bookPS.toDto())
@@ -47,7 +48,8 @@ public class BookService {
             System.out.println("============ 서비스 레이어");
         });
 
-        return dtos;
+        BookListRespDto bookListRespDto = BookListRespDto.builder().bookList(dtos).build();
+        return bookListRespDto;
     }
 
     // 3. 책한건보기
